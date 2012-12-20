@@ -1,0 +1,60 @@
+Name:           dimple2
+Version:        0.0
+License-file:   LICENSE.md
+Author:         Eric Merritt <ericbmerritt@gmail.com
+Maintainer:     Eric Merritt <ericbmerritt@gmail.com
+Build-type:     Simple
+
+Synopsis:       An implementation Dimple-II membership protocol for epidemic protocols
+Description:    Provides a reliable, churn tolerante membership protocol for systems
+                based on epidemic protocols. This implementation includes a discovery
+                mechenism.
+
+Cabal-version:  >=1.8
+Extra-source-files: README.md
+
+Library
+        Exposed-Modules: Dimple2
+                         , Dimple2.Base
+        hs-source-dirs: src
+        Build-depends:   base
+                         , enumerator
+                         , network-enumerator
+                         , netstring-enumerator
+                         , time
+                         , network
+                         , network-multicast
+                         , split
+        Ghc-options:     -Wall -Werror -O2 -threaded -rtsopts -with-rtsopts=-N
+
+Executable dimple2-test
+        hs-source-dirs: src
+        main-is:        Main.hs
+        build-depends:  base
+                        , enumerator
+                        , network-enumerator
+                        , netstring-enumerator
+                        , time
+                        , QuickCheck
+                        , network
+                        , network-multicast
+                        , split
+                        , cmdargs
+        Ghc-options:     -Wall -Werror -fno-warn-orphans -threaded -rtsopts -with-rtsopts=-N
+
+Test-suite dimple2-unittests
+        type:           exitcode-stdio-1.0
+        hs-source-dirs: tests, src
+        main-is:        Main.hs
+        build-depends:  base
+                        , enumerator
+                        , network-enumerator
+                        , netstring-enumerator
+                        , time
+                        , test-framework
+                        , test-framework-quickcheck2
+                        , QuickCheck
+                        , network
+                        , network-multicast
+                        , split
+        Ghc-options:     -Wall -Werror -fhpc -fno-warn-orphans -threaded -rtsopts -with-rtsopts=-N
